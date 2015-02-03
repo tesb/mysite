@@ -2,6 +2,10 @@
 {% block content %}
 
 
+<p>{{ message }}</p>
+
+
+
 <div class="container-fluid">
 <div class="jumbotron">
 
@@ -11,9 +15,12 @@
       <div class="col-md-7"></div>
       <div class="col-md-3">
           
-<form role="form" action="/login" method="POST">
-
+<form role="form" action="/login/" method="POST">
+	
+	{% csrf_token %}
+	
   <div class="form-group">
+   
     <label for="exampleInputText">UserName</label>
     <input type="text" class="form-control" id="exampleInputText" placeholder="UserName" name="username">
   </div>

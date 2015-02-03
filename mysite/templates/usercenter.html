@@ -3,11 +3,31 @@
 
 {% block content %}
 
-<p>
+  <h3>UserCenter</h3>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-2"></div>
+  
+  <div class="col-md-1">
+  
+  avatra:<br> 
+  <img src=" {{ avatra }} " alt="avatra" class="img-thumbnail">
+  </div>
+  
+  <div class="col-md-7">
 
-Usercenter
+  <p><strong>UserName:</strong> {{ username }}</p>
+  <p><strong>E-mail:</strong>{{ email }}</p>
+  <p><strong>Content:</strong>{{ content }}</p>
+  
+  </div>
+  
+  <div class="col-md-2"></div>
 
-</p>
+</div>
+</div>
+
+
 
 {% endblock %}
 

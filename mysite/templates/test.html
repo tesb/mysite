@@ -3,11 +3,12 @@
 
 {% block content %}
 
-<p>
+{% for item in user %}
+<p>{{ item }}</p>
 
-Test
+{% endfor %}
 
-</p>
+
 
 {% endblock %}
 
