@@ -1,7 +1,7 @@
 # Create your views here.
 from django.http import HttpResponse 
 from django.shortcuts import render_to_response
-#from django.core.context_processors import csrf
+from django.template import RequestContext
 
 from hashlib import md5
 
@@ -10,7 +10,7 @@ from hashlib import md5
 def Index(request):
     return render_to_response('index.html')
 
-
+#@csrf_protect
 def Login(request):
     message = ''
     if request.method == 'POST':
@@ -23,8 +23,8 @@ def Login(request):
             message = 'login failed please check username and password'
 
     response = {'message':message }
-
-    return render_to_response('login.html' , response)
+    
+    return render_to_response('login.html' , response , context_instance=RequestContext(request) )
 
 
 def Logout(request):
@@ -33,9 +33,9 @@ def Logout(request):
     return render_to_response('logout.html' , response )
 
 
-def Archives(request,num):
-    response = {'num' , num}
-    return render_to_response('archives.html')
+def Archives(request):
+    response = {'num' : 'archivespage'}
+    return render_to_response('archives.html' , response )
 
 
 def Usercenter(request):

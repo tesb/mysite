@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^index/' , 'blog.views.Index'),
     url(r'^login/' , 'blog.views.Login'),
     url(r'^logout/' , 'blog.views.Logout'),
-    url(r'^archives/<num>' , 'blog.views.Archives'),
+    url(r'^archives/' , 'blog.views.Archives'),
     url(r'^logout/' , 'blog.views.Logout'),
     url(r'^usercenter/' , 'blog.views.Usercenter'),
 
