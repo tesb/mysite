@@ -50,9 +50,9 @@ def Usercenter(request):
 
 def Test( request ):
 
-    user = User.objects.order_by('name')
+    response = {}
     
-    return render_to_response('test.html' , { 'user':user } )
+    return render_to_response('test.html' , response )
 
 
 
