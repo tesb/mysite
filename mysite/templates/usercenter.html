@@ -3,23 +3,30 @@
 
 {% block content %}
 
-  <h3>UserCenter</h3>
+
+<h3>UserCenter</h3>
+  
+{% for item in user %}
+
+
 <div class="container-fluid">
 <div class="row">
   <div class="col-md-2"></div>
   
   <div class="col-md-1">
-  
-  avatra:<br> 
-  <img src=" {{ avatra }} " alt="avatra" class="img-thumbnail">
+ 
+  <img src=" {{ item.avatra }} " alt="avatra" class="img-thumbnail">
+
   </div>
   
   <div class="col-md-7">
 
-  <p><strong>UserName:</strong> {{ username }}</p>
-  <p><strong>E-mail:</strong>{{ email }}</p>
-  <p><strong>Content:</strong>{{ content }}</p>
-  
+  <p><strong>UserName:</strong> {{ item.name }}</p>
+  <p><strong>Age:</strong> {{ item.age }}</p>
+  <p><strong>E-mail:</strong>{{ item.email }}</p>
+  <p><strong>Address:</strong>{{ item.address }}</p>
+  <p><strong>Website:</strong> {{ item.website }}</p>
+  <hr>
   </div>
   
   <div class="col-md-2"></div>
@@ -27,6 +34,7 @@
 </div>
 </div>
 
+{% endfor %}
 
 
 {% endblock %}

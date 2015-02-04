@@ -3,11 +3,19 @@
 
 {% block content %}
 
+
+{% for item in post %}
+<p><strong>
+{{ item.title }}
+</strong></p>
+
+<p>Author:{{item.author}}</p>
+
 <p>
-
-{{ num }}
-
+{{ item.content }}
 </p>
+
+{% endfor %}
 
 {% endblock %}
 

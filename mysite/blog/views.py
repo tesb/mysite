@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
+from blog.models import User,Post
+
 from hashlib import md5
 
 
@@ -34,34 +36,23 @@ def Logout(request):
 
 
 def Archives(request):
-    response = {'num' : 'archivespage'}
+    post = Post.objects.order_by('id')
+    response = { 'post':post }
     return render_to_response('archives.html' , response )
 
 
 def Usercenter(request):
-    baseurl = 'http://7u2m64.com1.z0.glb.clouddn.com/avatar/'
-    user = {
-            'username':'Jack',
-            'email':'stevensin@126.com',
-            'content':'I\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content testI\'m a content test',
-            }
-    user['avatra'] = baseurl + md5( user['email'] ).hexdigest()
+     
+    user = User.objects.order_by('id')
     
-    return render_to_response('usercenter.html', user )
+    return render_to_response('usercenter.html' , { 'user':user } )
 
 
-def Test(request ):
+def Test( request ):
 
-    response = { 'user':
-                [
-                  {'username':'Jack','email':'stevensin@126.com','content':'I\'m a content'},
-                  {'username':'Jack','email':'stevensin@126.com','content':'I\'m a content'},
-                  {'username':'Jack','email':'stevensin@126.com','content':'I\'m a content'}
-                
-                ] 
-                }
-    resp = { 'a': [1,2,3,4,5,6,7,8,9,0,11] }
-    return render_to_response('test.html' , response )
+    user = User.objects.order_by('name')
+    
+    return render_to_response('test.html' , { 'user':user } )
 
 
 
