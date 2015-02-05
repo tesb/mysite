@@ -5,42 +5,35 @@ from django.db import models
 class User(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30)
-    age = models.IntegerField(max_length=20)
-    email = models.EmailField()
+    age = models.IntegerField(max_length=20 )
+    email = models.EmailField( max_length=75 , verbose_name='e-mail' )
     address = models.CharField(max_length=60)
     avatra = models.URLField()
+    reg_ip = models.IPAddressField(default='0.0.0.0')
     website = models.URLField()
     
     def __unicode__(self):
-        return self.name
+        return u'%s' % (self.name)
 
-class Post(models.Model):
+class Article(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=50)
-    content = models.TextField(max_length=1000)
+    content = models.TextField()
+    publish_date = models.DateField( auto_now = False, auto_now_add = False  )
+    article_num = models.CharField(max_length=50 , unique=True)
     
     def __unicode__(self):
-        return self.title + '------' + self.author
+        return u'%s ' % ( self.title )
 
 
-#class Publisher(models.Model):
-#    name = models.CharField(max_length=30)
-#    address = models.CharField(max_length=50)
-#    city = models.CharField(max_length=60)
-#    state_province = models.CharField(max_length=30)
-#    country = models.CharField(max_length=50)
-#    website = models.URLField()
-#
-#class Author(models.Model):
-#    first_name = models.CharField(max_length=30)
-#    last_name = models.CharField(max_length=40)
-#    email = models.EmailField()
-#
-#class Book(models.Model):
-#    title = models.CharField(max_length=100)
-#    authors = models.ManyToManyField(Author)
-#    publisher = models.ForeignKey(Publisher)
-#    publication_date = models.DateField()
+class FAQ(models.Model):
+    id = models.AutoField(primary_key=True)
+    question = models.CharField(max_length=200)
+    answer = models.CharField(max_length=200)
+    pubdate = models.DateTimeField( 'date published' )
+
+    def __unicode__(self):
+        return self.question
 
 

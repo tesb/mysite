@@ -17,14 +17,15 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     
     url(r'^$', 'blog.views.Index' ),
-    url(r'^index/' , 'blog.views.Index'),
-    url(r'^login/' , 'blog.views.Login'),
-    url(r'^logout/' , 'blog.views.Logout'),
-    url(r'^archives/' , 'blog.views.Archives'),
-    url(r'^logout/' , 'blog.views.Logout'),
-    url(r'^usercenter/' , 'blog.views.Usercenter'),
+    url(r'^index/$' , 'blog.views.Index'),
+    url(r'^login/$' , 'blog.views.Login'),
+    url(r'^logout/$' , 'blog.views.Logout'),
+    url(r'^archives/$' , 'blog.views.Archives'),
+    url(r'^logout/$' , 'blog.views.Logout'),
+    url(r'^usercenter/$' , 'blog.views.Usercenter'),
+    url(r'^article/(?P<post_id>\d{4,12})/$' , 'blog.views.SingleArticle'),
 
-    url(r'^test/' , 'blog.views.Test'),
+    url(r'^test/$' , 'blog.views.Test'),
     
     
 )

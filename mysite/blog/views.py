@@ -1,9 +1,9 @@
 # Create your views here.
-from django.http import HttpResponse 
+from django.http import HttpResponse , Http404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from blog.models import User,Post
+from blog.models import User,Article
 
 from hashlib import md5
 
@@ -36,23 +36,36 @@ def Logout(request):
 
 
 def Archives(request):
-    post = Post.objects.order_by('id')
-    response = { 'post':post }
+    all_articles = Article.objects.order_by('id')
+    
+    response = { 'post':all_articles }
     return render_to_response('archives.html' , response )
 
 
 def Usercenter(request):
      
-    user = User.objects.order_by('id')
+    user = User.objects.filter(id=3)
     
     return render_to_response('usercenter.html' , { 'user':user } )
 
 
+def SingleArticle(request , post_id):
+    try:
+        post_id = int(post_id)
+    except ValueError:
+        raise Http404()
+    
+    post = Article.objects.filter( article_num=post_id  )
+    return render_to_response('singlearticle.html' , {'post':post} )
+
+
+
 def Test( request ):
 
-    response = {}
+    post = 'sb'
     
-    return render_to_response('test.html' , response )
+    
+    return render_to_response('test.html' , {'post':post} )
 
 
 

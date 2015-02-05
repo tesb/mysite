@@ -6,12 +6,12 @@
 
 {% for item in post %}
 <p><strong>
-{{ item.title }}
+<a href="/article/{{item.article_num}}">{{ item.title }}</a>
 </strong></p>
 
 <p>Author:{{item.author}}</p>
 
-<p>
+<p class="auto_break">
 {{ item.content }}
 </p>
 
